@@ -12,18 +12,17 @@
 </style>
 </head>
 <body bgcolor="black">
-
 <canvas id="temp1Chart" width="1100" height="900"></canvas>
+<canvas id="temp2Chart" width="1100" height="900"></canvas>
 <canvas id="irChart" width="1100" height="900"></canvas>
 <canvas id="fullChart" width="1100" height="900"></canvas>
 <canvas id="visChart" width="1100" height="900"></canvas>
 <canvas id="luxChart" width="1100" height="900"></canvas>
-<canvas id="temp2Chart" width="1100" height="900"></canvas>
 <canvas id="pressureChart" width="1100" height="900"></canvas>
 <canvas id="humidChart" width="1100" height="900"></canvas>
-
 <script>
 function plot(results) {
+
 var sum1=0;
 var sum2=0;
 var sum3=0;
@@ -33,68 +32,64 @@ var sum6=0;
 var sum7=0;
 var sum8=0;
 var len=30;
-if (results["temp1"].length<30) {
-    len=results["temp1"].length;
+if (results["data1"].length<30) {
+    len=results["data1"].length;
 }
+
 for (var j=0;j<len;j++) {
-    sum1=sum1+results["temp1"][j].y;
-    sum2=sum2+results["ir"][j].y;    
-    sum3=sum3+results["full"][j].y;
-    sum4=sum4+results["vis"][j].y;
-    sum5=sum5+results["lux"][j].y;
-    sum6=sum6+results["temp2"][j].y;
-    sum7=sum7+results["pressure"][j].y;
-    sum8=sum8+results["humid"][j].y;
+    sum1=sum1+results["data1"][j].y;
+    sum2=sum2+results["data2"][j].y;
+    sum3=sum3+results["data3"][j].y;
+    sum4=sum4+results["data4"][j].y;
+    sum5=sum5+results["data5"][j].y;
+    sum6=sum6+results["data6"][j].y;
+    sum7=sum7+results["data7"][j].y;
+    sum8=sum8+results["data8"][j].y;
 }
-for (var i=0; i<results["temp1"].length-30; i++) {
-    var current1=results["temp1"][i].y;
-    var current2=results["ir"][i].y;
-    var current3=results["full"][i].y;
-    var current4=results["vis"][i].y;
-    var current5=results["lux"][i].y;
-    var current6=results["temp2"][i].y;
-    var current7=results["pressure"][i].y;
-    var current8=results["humid"][i].y;
-    
-    results["temp1"][i].y=sum1/30;
-    results["ir"][i].y=sum2/30;
-    results["full"][i].y=sum3/30;
-    results["vis"][i].y=sum4/30;
-    results["lux"][i].y=sum5/30;
-    results["temp2"][i].y=sum6/30;
-    results["pressure"][i].y=sum7/30;
-    results["humid"][i].y=sum8/30;
-    
-    sum1=sum1-current1+results["temp1"][i+len].y;
-    sum2=sum2-current2+results["ir"][i+len].y;
-    sum3=sum3-current3+results["full"][i+len].y;
-    sum4=sum4-current4+results["vis"][i+len].y;
-    sum5=sum5-current5+results["lux"][i+len].y;
-    sum6=sum6-current6+results["temp2"][i+len].y;
-    sum7=sum7-current7+results["pressure"][i+len].y;
-    sum8=sum8-current8+results["humid"][i+len].y;    
+for (var i=0; i<results["data1"].length-30; i++) {
+    var current1=results["data1"][i].y;
+    var current2=results["data2"][i].y;
+    var current3=results["data3"][i].y;
+    var current4=results["data4"][i].y;
+    var current5=results["data5"][i].y;
+    var current6=results["data6"][i].y;
+    var current7=results["data7"][i].y;
+    var current8=results["data8"][i].y;
+    results["data1"][i].y=sum1/30;
+    results["data2"][i].y=sum2/30;
+    results["data3"][i].y=sum3/30;
+    results["data4"][i].y=sum4/30;
+    results["data5"][i].y=sum5/30;
+    results["data6"][i].y=sum6/30;
+    results["data7"][i].y=sum7/30;
+    results["data8"][i].y=sum8/30;
+    sum1=sum1-current1+results["data1"][i+len].y;
+    sum2=sum2-current2+results["data2"][i+len].y;
+    sum3=sum3-current3+results["data3"][i+len].y;
+    sum4=sum4-current4+results["data4"][i+len].y;
+    sum5=sum5-current5+results["data5"][i+len].y;
+    sum6=sum6-current6+results["data6"][i+len].y;
+    sum7=sum7-current7+results["data7"][i+len].y;
+    sum8=sum8-current8+results["data8"][i+len].y;
 }
-for (var i=results["temp1"].length-30; i<results["temp1"].length; i++) {
-    var current1=results["temp1"][i].y;
-    var current2=results["ir"][i].y;
-    var current3=results["full"][i].y;
-    var current4=results["vis"][i].y;
-    var current5=results["lux"][i].y;
-    var current6=results["temp2"][i].y;
-    var current7=results["pressure"][i].y;
-    var current8=results["humid"][i].y;
-    
-    var len=results["temp1"].length-i;
-    
-    results["temp1"][i].y=sum1/len;
-    results["ir"][i].y=sum2/len;
-    results["full"][i].y=sum3/len;
-    results["vis"][i].y=sum4/len;
-    results["lux"][i].y=sum5/len;
-    results["temp2"][i].y=sum6/len;
-    results["pressure"][i].y=sum7/len;
-    results["humid"][i].y=sum8/len;
-    
+for (var i=results["data1"].length-30; i<results["data1"].length; i++) {
+    var current1=results["data1"][i].y;
+    var current2=results["data2"][i].y;
+    var current3=results["data3"][i].y;
+    var current4=results["data4"][i].y;
+    var current5=results["data5"][i].y;
+    var current6=results["data6"][i].y;
+    var current7=results["data7"][i].y;
+    var current8=results["data8"][i].y;
+    var len=results["data1"].length-i;
+    results["data1"][i].y=sum1/len;
+    results["data2"][i].y=sum2/len;
+    results["data3"][i].y=sum3/len;
+    results["data4"][i].y=sum4/len;
+    results["data5"][i].y=sum5/len;
+    results["data6"][i].y=sum6/len;
+    results["data7"][i].y=sum7/len;
+    results["data8"][i].y=sum8/len;
     sum1=sum1-current1;
     sum2=sum2-current2;
     sum3=sum3-current3;
@@ -105,7 +100,7 @@ for (var i=results["temp1"].length-30; i<results["temp1"].length; i++) {
     sum8=sum8-current8;
 }
 
-//TEMP1
+// CHART FOR TEMP1
 var ctx = document.getElementById("temp1Chart").getContext('2d');
 Chart.defaults.global.defaultFontSize = 16;
 Chart.defaults.global.defaultFontColor = "#FFFFFF";
@@ -113,13 +108,13 @@ var myChart = new Chart(ctx, {
     type: 'line',
     data: {
         datasets: [{
-			label: "Inside",
+			label: "",
 			lineTension: 0,
 			pointRadius: 0,
 			borderColor: "#0000ff",
 			borderWidth: 2,
 			cubicInterpolationMode: "monotone",
-            data: results["temp1"],
+            data: results["data1"],
 			fill: false
         }],
     },
@@ -149,7 +144,7 @@ var myChart = new Chart(ctx, {
 				display: true,
 				scaleLabel: {
 					display: true,
-					labelString: "Temperature (Degrees Celsius)",
+					labelString: "Temperature, Degrees C",
 				},
 				gridLines: {
 					zeroLineColor: "rgba(255, 0, 0, 255)",
@@ -168,33 +163,105 @@ var myChart = new Chart(ctx, {
 		},
 		title: {
 			display: true,
-			text: "High-Res Temperature",
+			text: "High Resolution Temperature",
 		}
     }
 });
 ctx.font = "14px Arial";
 ctx.fillStyle = "white";
 var d = new Date();
-ctx.fillText(d.toLocaleString(),500,60); 
-ctx.fillText("Inside: " + results["temp1"][results["temp1"].length-1].y.toFixed(1),90,55);
-ctx.beginPath();
-ctx.moveTo(75,50);
-ctx.lineTo(85,50);
+ctx.fillText(d.toLocaleString(),500,60);
 ctx.stroke();
 
-//IR
+// CHART FOR TEMP2
+var ctx = document.getElementById("temp2Chart").getContext('2d');
+Chart.defaults.global.defaultFontSize = 16;
+Chart.defaults.global.defaultFontColor = "#FFFFFF";
+var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        datasets: [{
+			label: "",
+			lineTension: 0,
+			pointRadius: 0,
+			borderColor: "#0000ff",
+			borderWidth: 2,
+			cubicInterpolationMode: "monotone",
+            data: results["data2"],
+			fill: false
+        }],
+    },
+    options: {
+		responsive: false,
+		responsiveAnimationDuration:0,
+		animation: {
+			duration: 0,
+		},
+		hover: {
+			animationDuration: 400,
+		},
+        scales: {
+			xAxes: [{
+				type: "time",
+				display: true,
+				scaleLabel: {
+					display: true,
+					labelString: "Date & Time",
+				},
+				gridLines: {
+					color: "rgba(255, 0, 0, 255)",
+					borderDash: [4, 8],
+				},
+			}],
+			yAxes: [{
+				display: true,
+				scaleLabel: {
+					display: true,
+					labelString: "Temperature, Degrees C",
+				},
+				gridLines: {
+					zeroLineColor: "rgba(255, 0, 0, 255)",
+					zeroLineBorderDash: [4, 8],
+					color: "rgba(255, 0, 0, 255)",
+					borderDash: [4, 8],
+				},
+			}]
+		},
+		legend: {
+			display: false,
+			position: "top",
+			labels: {
+				boxWidth: 2,
+			},
+		},
+		title: {
+			display: true,
+			text: "Temperature",
+		}
+    }
+});
+
+ctx.font = "14px Arial";
+ctx.fillStyle = "white";
+
+ctx.fillText(d.toLocaleString(),500,60); 
+ctx.stroke();
+
+// CHART FOR ir
 var ctx = document.getElementById("irChart").getContext('2d');
-var irChart = new Chart(ctx, {
+Chart.defaults.global.defaultFontSize = 16;
+Chart.defaults.global.defaultFontColor = "#FFFFFF";
+var myChart = new Chart(ctx, {
     type: 'line',
     data: {
         datasets: [{
-			label: "Inside",
+			label: "",
 			lineTension: 0,
 			pointRadius: 0,
 			borderColor: "#0000ff",
 			borderWidth: 2,
 			cubicInterpolationMode: "monotone",
-            data: results["ir"],
+            data: results["data3"],
 			fill: false
         }],
     },
@@ -224,7 +291,7 @@ var irChart = new Chart(ctx, {
 				display: true,
 				scaleLabel: {
 					display: true,
-					labelString: "Intensity",
+					labelString: "IR Intensity",
 				},
 				gridLines: {
 					zeroLineColor: "rgba(255, 0, 0, 255)",
@@ -243,33 +310,30 @@ var irChart = new Chart(ctx, {
 		},
 		title: {
 			display: true,
-			text: "IR Intensity",
+			text: "IR",
 		}
     }
 });
 ctx.font = "14px Arial";
 ctx.fillStyle = "white";
-var d = new Date();
 ctx.fillText(d.toLocaleString(),500,60); 
-ctx.fillText("Inside: " + results["ir"][results["ir"].length-1].y.toFixed(1),90,55);
-ctx.beginPath();
-ctx.moveTo(75,50);
-ctx.lineTo(85,50);
 ctx.stroke();
 
-//FULL
+// CHART FOR full
 var ctx = document.getElementById("fullChart").getContext('2d');
-var fullChart = new Chart(ctx, {
+Chart.defaults.global.defaultFontSize = 16;
+Chart.defaults.global.defaultFontColor = "#FFFFFF";
+var myChart = new Chart(ctx, {
     type: 'line',
     data: {
         datasets: [{
-			label: "Inside",
+			label: "",
 			lineTension: 0,
 			pointRadius: 0,
 			borderColor: "#0000ff",
 			borderWidth: 2,
 			cubicInterpolationMode: "monotone",
-            data: results["full"],
+            data: results["data4"],
 			fill: false
         }],
     },
@@ -299,7 +363,7 @@ var fullChart = new Chart(ctx, {
 				display: true,
 				scaleLabel: {
 					display: true,
-					labelString: "Intensity",
+					labelString: "Intensity, unsigned 16 bit raw value",
 				},
 				gridLines: {
 					zeroLineColor: "rgba(255, 0, 0, 255)",
@@ -324,27 +388,24 @@ var fullChart = new Chart(ctx, {
 });
 ctx.font = "14px Arial";
 ctx.fillStyle = "white";
-var d = new Date();
 ctx.fillText(d.toLocaleString(),500,60); 
-ctx.fillText("Inside: " + results["full"][results["full"].length-1].y.toFixed(1),90,55);
-ctx.beginPath();
-ctx.moveTo(75,50);
-ctx.lineTo(85,50);
 ctx.stroke();
 
-//VIS
+// CHART FOR vis
 var ctx = document.getElementById("visChart").getContext('2d');
-var visChart = new Chart(ctx, {
+Chart.defaults.global.defaultFontSize = 16;
+Chart.defaults.global.defaultFontColor = "#FFFFFF";
+var myChart = new Chart(ctx, {
     type: 'line',
     data: {
         datasets: [{
-			label: "Inside",
+			label: "",
 			lineTension: 0,
 			pointRadius: 0,
 			borderColor: "#0000ff",
 			borderWidth: 2,
 			cubicInterpolationMode: "monotone",
-            data: results["vis"],
+            data: results["data5"],
 			fill: false
         }],
     },
@@ -374,7 +435,7 @@ var visChart = new Chart(ctx, {
 				display: true,
 				scaleLabel: {
 					display: true,
-					labelString: "Intensity",
+					labelString: "Intensity, unsigned 16 bit raw value",
 				},
 				gridLines: {
 					zeroLineColor: "rgba(255, 0, 0, 255)",
@@ -399,27 +460,24 @@ var visChart = new Chart(ctx, {
 });
 ctx.font = "14px Arial";
 ctx.fillStyle = "white";
-var d = new Date();
 ctx.fillText(d.toLocaleString(),500,60); 
-ctx.fillText("Inside: " + results["vis"][results["vis"].length-1].y.toFixed(1),90,55);
-ctx.beginPath();
-ctx.moveTo(75,50);
-ctx.lineTo(85,50);
 ctx.stroke();
 
-//LUX
+// CHART FOR lux
 var ctx = document.getElementById("luxChart").getContext('2d');
-var luxChart = new Chart(ctx, {
+Chart.defaults.global.defaultFontSize = 16;
+Chart.defaults.global.defaultFontColor = "#FFFFFF";
+var myChart = new Chart(ctx, {
     type: 'line',
     data: {
         datasets: [{
-			label: "Inside",
+			label: "",
 			lineTension: 0,
 			pointRadius: 0,
 			borderColor: "#0000ff",
 			borderWidth: 2,
 			cubicInterpolationMode: "monotone",
-            data: results["lux"],
+            data: results["data6"],
 			fill: false
         }],
     },
@@ -449,7 +507,7 @@ var luxChart = new Chart(ctx, {
 				display: true,
 				scaleLabel: {
 					display: true,
-					labelString: "Lux",
+					labelString: "Illuminance, Lux",
 				},
 				gridLines: {
 					zeroLineColor: "rgba(255, 0, 0, 255)",
@@ -468,108 +526,30 @@ var luxChart = new Chart(ctx, {
 		},
 		title: {
 			display: true,
-			text: "Lux Illuminance",
+			text: "Illuminance",
 		}
     }
 });
 ctx.font = "14px Arial";
 ctx.fillStyle = "white";
-var d = new Date();
 ctx.fillText(d.toLocaleString(),500,60); 
-ctx.fillText("Inside: " + results["lux"][results["lux"].length-1].y.toFixed(1),90,55);
-ctx.beginPath();
-ctx.moveTo(75,50);
-ctx.lineTo(85,50);
 ctx.stroke();
 
-//TEMP2
-var ctx = document.getElementById("temp2Chart").getContext('2d');
-var temp2Chart = new Chart(ctx, {
-    type: 'line',
-    data: {
-        datasets: [{
-			label: "Inside",
-			lineTension: 0,
-			pointRadius: 0,
-			borderColor: "#0000ff",
-			borderWidth: 2,
-			cubicInterpolationMode: "monotone",
-            data: results["temp2"],
-			fill: false
-        }],
-    },
-    options: {
-		responsive: false,
-		responsiveAnimationDuration:0,
-		animation: {
-			duration: 0,
-		},
-		hover: {
-			animationDuration: 400,
-		},
-        scales: {
-			xAxes: [{
-				type: "time",
-				display: true,
-				scaleLabel: {
-					display: true,
-					labelString: "Date & Time",
-				},
-				gridLines: {
-					color: "rgba(255, 0, 0, 255)",
-					borderDash: [4, 8],
-				},
-			}],
-			yAxes: [{
-				display: true,
-				scaleLabel: {
-					display: true,
-					labelString: "Temperature, degrees centiCelsius",
-				},
-				gridLines: {
-					zeroLineColor: "rgba(255, 0, 0, 255)",
-					zeroLineBorderDash: [4, 8],
-					color: "rgba(255, 0, 0, 255)",
-					borderDash: [4, 8],
-				},
-			}]
-		},
-		legend: {
-			display: false,
-			position: "top",
-			labels: {
-				boxWidth: 2,
-			},
-		},
-		title: {
-			display: true,
-			text: "Temperature Sensor 2",
-		}
-    }
-});
-ctx.font = "14px Arial";
-ctx.fillStyle = "white";
-var d = new Date();
-ctx.fillText(d.toLocaleString(),500,60); 
-ctx.fillText("Inside: " + results["temp2"][results["temp2"].length-1].y.toFixed(1),90,55);
-ctx.beginPath();
-ctx.moveTo(75,50);
-ctx.lineTo(85,50);
-ctx.stroke();
-
-//PRESSURE
+// CHART FOR pressure
 var ctx = document.getElementById("pressureChart").getContext('2d');
-var pressureChart = new Chart(ctx, {
+Chart.defaults.global.defaultFontSize = 16;
+Chart.defaults.global.defaultFontColor = "#FFFFFF";
+var myChart = new Chart(ctx, {
     type: 'line',
     data: {
         datasets: [{
-			label: "Inside",
+			label: "",
 			lineTension: 0,
 			pointRadius: 0,
 			borderColor: "#0000ff",
 			borderWidth: 2,
 			cubicInterpolationMode: "monotone",
-            data: results["pressure"],
+            data: results["data7"],
 			fill: false
         }],
     },
@@ -599,7 +579,7 @@ var pressureChart = new Chart(ctx, {
 				display: true,
 				scaleLabel: {
 					display: true,
-					labelString: "Pressure (millibars)",
+					labelString: "Pressure, millibars",
 				},
 				gridLines: {
 					zeroLineColor: "rgba(255, 0, 0, 255)",
@@ -618,33 +598,30 @@ var pressureChart = new Chart(ctx, {
 		},
 		title: {
 			display: true,
-			text: "Air Pressure",
+			text: "Pressure",
 		}
     }
 });
 ctx.font = "14px Arial";
 ctx.fillStyle = "white";
-var d = new Date();
 ctx.fillText(d.toLocaleString(),500,60); 
-ctx.fillText("Inside: " + results["pressure"][results["pressure"].length-1].y.toFixed(1),90,55);
-ctx.beginPath();
-ctx.moveTo(75,50);
-ctx.lineTo(85,50);
 ctx.stroke();
 
-//HUMID
+// CHART FOR humid
 var ctx = document.getElementById("humidChart").getContext('2d');
-var humidChart = new Chart(ctx, {
+Chart.defaults.global.defaultFontSize = 16;
+Chart.defaults.global.defaultFontColor = "#FFFFFF";
+var myChart = new Chart(ctx, {
     type: 'line',
     data: {
         datasets: [{
-			label: "Inside",
+			label: "",
 			lineTension: 0,
 			pointRadius: 0,
 			borderColor: "#0000ff",
 			borderWidth: 2,
 			cubicInterpolationMode: "monotone",
-            data: results["humid"],
+            data: results["data8"],
 			fill: false
         }],
     },
@@ -674,7 +651,7 @@ var humidChart = new Chart(ctx, {
 				display: true,
 				scaleLabel: {
 					display: true,
-					labelString: "Humidity (millipercent)",
+					labelString: "Relative Humidity, percent",
 				},
 				gridLines: {
 					zeroLineColor: "rgba(255, 0, 0, 255)",
@@ -699,17 +676,11 @@ var humidChart = new Chart(ctx, {
 });
 ctx.font = "14px Arial";
 ctx.fillStyle = "white";
-var d = new Date();
 ctx.fillText(d.toLocaleString(),500,60); 
-ctx.fillText("Inside: " + results["humid"][results["humid"].length-1].y.toFixed(1),90,55);
-ctx.beginPath();
-ctx.moveTo(75,50);
-ctx.lineTo(85,50);
 ctx.stroke();
 
 }
-var jsondata= $.ajax({url: 'sql24.php', dataType: 'json', }).done(function (results) { plot(results); } );
+var jsondata= $.ajax({url:'sql24.php', dataType: 'json', }).done(function (results) { plot(results); } );
 </script>
 </body>
 </html>
-
